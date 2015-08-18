@@ -1,0 +1,17 @@
+{
+    "contents" : "---\ntitle: \"removing dbsnp from vcf\"\nauthor: \"Gabe\"\ndate: \"July 10, 2015\"\noutput: html_document\n---\n```{r}\nsource(\"http://bioconductor.org/biocLite.R\")\nbiocLite(\"VariantAnnotation\") #install the package\nlibrary(\"VariantAnnotation\") #load the package\nbiocLite(\"BSgenome.Hsapiens.NCBI.GRCh38\")\nlibrary(\"BSgenome.Hsapiens.NCBI.GRCh38\")\nbiocLite(\"SNPlocs.Hsapiens.dbSNP141.GRCh38\")\nlibrary(\"SNPlocs.Hsapiens.dbSNP141.GRCh38\")\nlibrary(GenomicRanges) \nlibrary(IRanges)\n\n\nnovvcf=function(x, genome, dbsnp)    {\ngenome=BSgenome.Hsapiens.NCBI.GRCh38\nx=system.file(\"extdata\", \"chr22.vcf.gz\", package=\"VariantAnnotation\")\ndbsnp=SNPlocs.Hsapiens.dbSNP141.GRCh38 \nvcf <- readVcf(x, seqinfo(genome))#creating vcf from sample data and genome\nrd <- rowRanges(vcf)#grange to acces names\nsnps=  snplocs(dbsnp, 'ch22', as.GRanges = TRUE)#locating ch22 snps\nnotdbsnpchr22 <-  !(sub(\"rs\", \"\", names(rd))%in% snps$RefSNP_id)#matching snps to vcf\nnovelvcf=vcf[notdbsnpchr22]#creating new vcf including only novel variants\n\n}\n\n\nnovvcf(system.file(\"extdata\", \"chr22.vcf.gz\", package=\"VariantAnnotation\"), BSgenome.Hsapiens.NCBI.GRCh38, SNPlocs.Hsapiens.dbSNP141.GRCh38  )\n\n\n \n\n```\n\n\n\n\n\n",
+    "created" : 1436830120741.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3465990191",
+    "id" : "3C54B29A",
+    "lastKnownWriteTime" : 1436831091,
+    "path" : "C:/Users/HP/Desktop/Rstudio/ICESEQ/R/novvcf.Rmd",
+    "project_path" : "R/novvcf.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

@@ -1,0 +1,10 @@
+Package: RNASEQ
+Type: Package
+Title: Analyze RNA SEQ data
+Version: 0.0.1
+Date: 2015-06-26
+Author: <rmurad@uci.edu>, <gtelles1992@gmail.com>
+Maintainer: <rmurad@uci.edu>
+Description: THis package will complete a comparative analyze between ICE-Seq abd RNA-Seq data.
+LazyData: TRUE
+Imports: VariantAnnotation

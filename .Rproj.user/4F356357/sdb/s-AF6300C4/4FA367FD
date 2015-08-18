@@ -1,0 +1,18 @@
+{
+    "contents" : "---\ntitle: \"Untitled\"\noutput: html_document\n---\n```{r}\n\nrnaseqdata=system.file(\"extdata\", \"chr22.vcf.gz\", package=\"VariantAnnotation\")\n\nvcf<- readVcf(rnaseqdata, \"hg19\")\nervcf=vcf[info(vcf)$ERATE<.05]\n\n```\n\n",
+    "created" : 1438120231748.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3137779208",
+    "id" : "4FA367FD",
+    "lastKnownWriteTime" : 1438120249,
+    "path" : "C:/Users/user/Desktop/UCI-R/drafts/editing rate.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

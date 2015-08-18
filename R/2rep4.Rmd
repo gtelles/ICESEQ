@@ -1,0 +1,35 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r}
+ice1vcf=readVcf("i2.vcf", "dm3")
+mock1vcf=readVcf("m2.vcf", "dm3")
+ice2vcf=readVcf("i4.vcf", "dm3")
+mock2vcf=readVcf("m4.vcf", "dm3")
+i2vcf=limitedsites(ice1vcf)
+m2vcf=limitedsites(mock1vcf)
+i4vcf=limitedsites(ice2vcf)
+m4vcf=limitedsites(mock2vcf)
+
+
+twoRepFilter=function(replicate1, replicate2){
+rd1=rowRanges(replicate1)
+rd2=rowRanges(replicate2)
+ov=findOverlaps(rd1, rd2)
+ovRep1=replicate1[queryHits(ov)]
+ovRep2=replicate2[subjectHits(ov)]
+#editing rate >5%
+
+
+
+
+}
+
+tworeps=twoRepFilter(m2vcf, m4vcf)
+info(tworeps)
+rowRanges(tworeps)
+
+```
+
