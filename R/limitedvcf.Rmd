@@ -6,26 +6,17 @@ output: html_document
 ---
 
 ```{r}
-source("http://bioconductor.org/biocLite.R")
-biocLite("VariantAnnotation") 
-library("VariantAnnotation") 
-
-ice1vcf=readVcf("i2.vcf", "dm3")
-mock1vcf=readVcf("m2.vcf", "dm3")
-ice2vcf=readVcf("i4.vcf", "dm3")
-mock2vcf=readVcf("m4.vcf", "dm3")
 limitedsites=function(vcf){
-
      a <- alt(vcf)
      altSnp <- elementLengths(a) == 1L
      ai <- unlist(a[altSnp]) # #unlist DNAstringsets
-     altSnp[altSnp] <- nchar(ai) == 1L & (ai %in% "G")
-     
+     altSnp[altSnp] <- nchar(ai) == 1L & (ai %in% "G"
+                                          )
      g <- alt(vcf)
      altSnp2 <- elementLengths(g) == 1L
      gi <- unlist(g[altSnp2]) # #unlist DNAstringsets
      altSnp2[altSnp2] <- nchar(gi) == 1L & (gi %in% "A")
-     
+  
      t <- alt(vcf)
      altSnp3 <- elementLengths(t) == 1L
      ti <- unlist(t[altSnp3]) # #unlist DNAstringsets
@@ -40,11 +31,17 @@ limitedsites=function(vcf){
     
 }
 
-#limitedvcf=limitedsites(vcf)
-
 
 ```
 
+```{r}
+source("http://bioconductor.org/biocLite.R")
+biocLite("VariantAnnotation") 
+library("VariantAnnotation")
+
+limitedvcf=limitedsites(vcf)
+
+```
 
 
 

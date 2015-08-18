@@ -6,10 +6,6 @@ output: html_document
 ---
 
 ```{r}
-source("http://bioconductor.org/biocLite.R")
-biocLite("VariantAnnotation") 
-library("VariantAnnotation") 
-
 fl=readVcf("i2.vcf", "dm3")
 rowRanges(fl)
 AtoG=function(vcf){
@@ -20,8 +16,14 @@ AtoG=function(vcf){
      vcf[(altSnp & ref(vcf) == "A")]}
 
 
+```
 
 
+
+
+
+
+```{r}
 oneRepa2g=AtoG(oneRep)
 one2Repa2g=AtoG(oneRep2)
 twoRepa2gcf=AtoG(tworeps)
@@ -31,7 +33,6 @@ rowRanges(twoRepa2gcf)
 as.data.frame(names(rowRanges(oneRepa2g)))
 as.data.frame(names(rowRanges(one2Repa2g)))
 as.data.frame(names(rowRanges(twoRepa2gcf)))
-
 
 ```
 

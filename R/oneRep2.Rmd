@@ -3,15 +3,6 @@ title: "Untitled"
 output: html_document
 ---
 ```{r}
-
-
-
-
-
-#rnaseqdata1=readVcf(system.file("extdata", "chr22.vcf.gz", package="VariantAnnotation"), "hg19")
-#fl=system.file("extdata", "chr22.vcf.gz", package="VariantAnnotation")
-#A2Gvcf=AtoG(fl, "GRCh38")
-
 oneRepFilter=function(ice, replicate){
 rd1=rowRanges(ice)
 rd2=rowRanges(replicate)
@@ -20,16 +11,21 @@ ovice=i2vcf[queryHits(ov)]
 ovmock=m2vcf[subjectHits(ov)]
 cov=(info(ovice)$DP<info(ovmock)$DP)#coverage           
 freq=(info(ovice)$AF1<info(ovmock)$AF1)#allel freq
+#still need pval
 oneRep=ovice[cov & freq] 
 }
-oneRep2=oneRepFilter(i4vcf, m4vcf)
-rowRanges(oneRep2)
-info(i2vcf)
+
 
 
 
 ```
 
+```{r}
+oneRep2=oneRepFilter(i4vcf, m4vcf)
+rowRanges(oneRep2)
+info(i2vcf)
+
+```
 
 
 
